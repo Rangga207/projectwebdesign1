@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Contact - Sweet Oven Bakery</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<body style="margin-top: 130px;">
+
+  <h1 class="judul-contact">Contact Us</h1>
+  <p class="text-contact">We’d love to hear from you! Whether you have questions, feedback, or custom orders, reach out to us below.</p>
+
+
+  <div class="contact-container">
+    <div class="contact-info">
+      <h2>Our Bakery</h2>
+      <p> <i class="fa-solid fa-location-dot"></i> SBH Student Boarding Housing, Jalan kampus Hijau</p>
+      <p> <i class="fa-solid fa-phone"></i> +62 812-9308-1012</p>
+      <p> <i class="fa-solid fa-envelope"></i> cakrarangga270@gmail.com</p>
+      <p> <i class="fa-solid fa-clock"></i> Open daily: 7:00 AM – 9:00 PM</p>
+    </div>
+
+    <form id="contactForm" class="form-contact">
+      <h2 class="msg-contact">Send a Message</h2>
+
+      <label for="name">Full Name</label>
+      <input type="text" id="name" placeholder="Enter your name" required>
+
+      <label for="email">Email Address</label>
+      <input type="email" id="email" placeholder="Enter your email" required>
+
+      <label for="topic">Topic</label>
+      <select id="topic" required>
+        <option value=" ">Select a topic</option>
+        <option value="Feedback">Feedback</option>
+        <option value="Complaint">Complaint</option>
+        <option value="Other">Other</option>
+      </select>
+
+      <label for="message">Message</label>
+      <textarea id="message" rows="5" placeholder="Write your message here..." required></textarea>
+
+      <button type="submit">Send Message</button>
+    </form>
+    <p id ="typingStatus"></p>
+  </div>
+
+  <footer>
+        <div class="footer-container">
+            <div class="footer-logo">
+                <h3>Bakery</h3>
+                <p>Baked with love since 1999.</p>
+                <p>From our oven to your heart.</p>
+                <p>Where every bite feels like home.</p>
+                <p>Elegant flavors, timeless quality.</p>
+            </div>
+            
+            <div class="footer-contact">
+                <h4>Contact Us</h4>
+                <a href="https://www.instagram.com/rangga.reswara?igsh=MjJ6MTRuZGxjcXZz&utm_source=qr"> <i class="fa-brands fa-instagram"></i></a>
+                <a href="https://wa.me/6281293081012"> <i class="fa-brands fa-whatsapp"></i></a>
+                <a href="mailto:cakrarangga270@gmail.com"> <i class="fa-regular fa-envelope"></i></a>
+            </div>
+
+        </div>
+    </footer>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+$(document).ready(function(){
+
+  // 1. Click/Submit Event
+  $("#contactForm").on("submit", function(e){
+    e.preventDefault(); // stop actual submission for now
+
+    let name = $("#name").val().trim();
+    let email = $("#email").val().trim();
+    let topic = $("#topic").val().trim();
+    let message = $("#message").val().trim();
+
+    if(name === "" || email === "" || message === ""){
+      alert("All fields are required!");
+      return false;
+    }
+
+    let atIndex = email.indexOf("@");
+    let dotIndex = email.lastIndexOf(".");    
+    if(atIndex < 1 || dotIndex < atIndex + 2 || dotIndex + 2 >=email.length){
+      alert("Invalid email format!");
+      return false;
+    }
+
+    alert("Thank you, " + name + "! Your message has been sent.");
+  });
+
+  // 2. Change Event (for dropdown)
+  $("#topic").on("change", function(){
+    let selectedTopic = $(this).val();
+    if(selectedTopic !== ""){
+      alert("You selected: " + selectedTopic);
+    }
+  });
+
+  // 3. Mousemove Event → subtle effect on form
+  $("#contactForm").on("mousemove", function(){
+    $(this).css("border", "2px solid #ffcc00");
+  })
+
+  // 4. Keypress Event → typing indicator in message box
+  $("#message").on("keypress", function(){
+    $("#typingStatus").text("You are typing...");
+  });
+
+  // 5. Focus Event → highlight email field
+    $("#email").on("focus", function(){
+      $(this).css("background-color", "lightyellow");
+    });
+
+  
+
+});
+</script>
+
+
+</body>
+</html>
