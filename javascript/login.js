@@ -10,7 +10,7 @@ $(document).ready(function () {
         if (user === "" || pass === "") {
             alert("Username and password cant be empty!");
         } else {
-            alert("Login berhasil!");
+            alert("Login successful!");
             window.location.href = "index.html"
         }
     });

@@ -9,7 +9,7 @@ $(document).ready(function () {
         if (user === "" || pass === "" || email === "") {
             alert("All fields must be filled out!");
         } else {
-            alert("Sign Up Berhasil!");
+            alert("Sign Up Succesful!");
         }
     });
 
