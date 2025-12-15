@@ -1,0 +1,12 @@
+version: "3.8"
+
+services:
+  xampp:
+    image: tomsik68/xampp
+    platform: linux/amd64
+    container_name: xampp-final
+    ports:
+      - "8080:80"
+    volumes:
+      - ./web:/opt/lampp/htdocs
+    restart: unless-stopped
